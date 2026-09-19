@@ -135,6 +135,9 @@ Add screenshots here:
 
 ![Blue Mouse Settings](docs/images/Blue-Mouse-Settings-Tab.png)
 
+### About
+
+![Blue Mouse Settings](docs/images/Blue-Mouse-About-Tab.png)
 
 ---
 
