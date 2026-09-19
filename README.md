@@ -1,7 +1,7 @@
 # 🖱️ Blue Mouse
 <p align="center">
 
-![GitHub Release](https://img.shields.io/github/v/release/bluexone116/BlueRunner?style=for-the-badge&logo=github&label=Release) ![GitHub Downloads](https://img.shields.io/github/downloads/bluexone116/BlueRunner/total?style=for-the-badge&logo=github&label=Downloads) ![GitHub Stars](https://img.shields.io/github/stars/bluexone116/BlueRunner?style=for-the-badge&logo=github&label=Stars) ![GitHub Issues](https://img.shields.io/github/issues/bluexone116/BlueRunner?style=for-the-badge&logo=github&label=Issues) ![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-blue?style=for-the-badge&logo=windows)
+![GitHub Release](https://img.shields.io/github/v/release/bluexone116/BlueMouse?style=for-the-badge&logo=github&label=Release) ![GitHub Downloads](https://img.shields.io/github/downloads/bluexone116/BlueMouse/total?style=for-the-badge&logo=github&label=Downloads) ![GitHub Stars](https://img.shields.io/github/stars/bluexone116/BlueMouse?style=for-the-badge&logo=github&label=Stars) ![GitHub Issues](https://img.shields.io/github/issues/bluexone116/BlueMouse?style=for-the-badge&logo=github&label=Issues) ![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-blue?style=for-the-badge&logo=windows)
 
 </p>
 > Turn your normal mouse into an OpenKneeboard controller while flying DCS World in VR.
