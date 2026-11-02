@@ -4,13 +4,13 @@
 ![GitHub Release](https://img.shields.io/github/v/release/bluexone116/BlueMouse?style=for-the-badge&logo=github&label=Release) ![GitHub Downloads](https://img.shields.io/github/downloads/bluexone116/BlueMouse/total?style=for-the-badge&logo=github&label=Downloads) ![GitHub Stars](https://img.shields.io/github/stars/bluexone116/BlueMouse?style=for-the-badge&logo=github&label=Stars) ![GitHub Issues](https://img.shields.io/github/issues/bluexone116/BlueMouse?style=for-the-badge&logo=github&label=Issues) ![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-blue?style=for-the-badge&logo=windows)
 
 </p>
-> Turn your normal mouse into an OpenKneeboard controller while flying DCS World in VR.
+> Use your everyday mouse to interact with OpenKneeboard in VR—without switching away from your simulator.
 
-**Blue Mouse** is a lightweight Windows utility designed for DCS World pilots who use **OpenKneeboard in VR**.
+**Blue Mouse** is a lightweight, standalone Windows utility that lets you use your normal desktop mouse to interact with **OpenKneeboard in VR** while keeping your simulator in the foreground.
 
-It allows your normal desktop mouse to temporarily control OpenKneeboard without taking focus away from DCS.
+Originally built for **DCS World**, Blue Mouse now also works with **Microsoft Flight Simulator 2024**. Blue Mouse also recognizes **MSFS 2020** and **iRacing**, but neither has been manually tested; compatibility is not yet confirmed.
 
-Activate Blue Mouse with a mouse-wheel click or an assigned HOTAS button, use your mouse to interact with OpenKneeboard, then deactivate it to immediately return normal mouse control to DCS.
+Activate Blue Mouse with a middle-mouse click or a bound HOTAS button, move and click inside OpenKneeboard, then deactivate to return mouse control to your simulator. **Blue Mouse 1.0.7 adds right-click support**, manually validated with OpenKneeboard 1.12.14.
 
 ---
 
@@ -24,10 +24,11 @@ While Blue Mouse is active:
 
 - Move the mouse to move the OpenKneeboard pointer
 - Left-click to select tabs, buttons, and other OpenKneeboard controls
-- DCS remains the foreground application
-- Mouse movement and clicks are prevented from accidentally operating the DCS cockpit
+- Right-click in supported content, including Chromium mouse-emulation pages and Window Capture
+- Keep your simulator in the foreground
+- Prevent mouse movement and clicks from unintentionally operating your simulator
 
-Deactivate Blue Mouse and your mouse immediately returns to normal DCS operation.
+Deactivate Blue Mouse and your mouse returns to normal simulator operation. Right-click behavior depends on the OpenKneeboard page type; it is not a universal context menu for every tab.
 
 ---
 
@@ -47,7 +48,7 @@ This makes it possible to:
 2. Press your assigned HOTAS control
 3. Use your normal mouse with OpenKneeboard
 4. Press the HOTAS control again
-5. Immediately return the mouse to DCS
+5. Immediately return the mouse to your simulator
 
 ---
 
@@ -59,36 +60,44 @@ Blue Mouse can also use the standard **mouse wheel / middle-click button** as th
 
 Click once to enable OpenKneeboard mouse control.
 
-Click again to return to normal DCS mouse control.
+Click again to return to normal simulator mouse control.
 
 The middle-click activation is intercepted only when Blue Mouse can safely route input to OpenKneeboard.
 
 ---
 
-## 🥽 Designed for DCS VR
+## 🥽 Designed for Simulator VR
 
-Blue Mouse was created specifically to solve a problem encountered when using **DCS World and OpenKneeboard in VR**.
+Blue Mouse began as a solution for **DCS World with OpenKneeboard in VR** and now supports additional simulators.
 
-Normally, interacting with an overlay while another application owns the foreground can be difficult.
+Normally, interacting with an overlay while a simulator owns the foreground can be difficult. Blue Mouse routes mouse input to OpenKneeboard without intentionally switching focus away from the active simulator.
 
-Blue Mouse avoids switching application focus.
+**Your simulator remains in the foreground while the mouse controls OpenKneeboard.**
 
-**DCS remains the foreground application while the mouse controls OpenKneeboard.**
+### Simulator compatibility
 
-This means no Alt-Tab, no bringing OpenKneeboard to the foreground, and no intentional interruption of DCS focus.
+| Simulator | Status |
+| --- | --- |
+| DCS World | Manually validated |
+| Microsoft Flight Simulator 2024 | Manually validated |
+| Microsoft Flight Simulator 2020 | Recognized; not tested |
+| iRacing | Recognized; not tested |
+
+Blue Mouse can also operate without recognizing a specific simulator, but compatibility with other applications is not guaranteed.
 
 ---
 
 ## 🛡️ Mouse Isolation
 
-When Blue Mouse is active and OpenKneeboard is available, Blue Mouse prevents the same physical mouse input from accidentally interacting with the DCS cockpit.
+When Blue Mouse is active and OpenKneeboard is connected, it suppresses the physical mouse input that would otherwise reach the foreground simulator.
 
 This includes:
 
 - Mouse movement
 - Left mouse clicks
+- Right mouse clicks
 
-When Blue Mouse is deactivated, normal DCS mouse operation is restored immediately.
+When Blue Mouse is deactivated, normal simulator mouse operation is restored.
 
 ---
 
@@ -110,13 +119,15 @@ Safety mechanisms are also built into the application to release mouse control i
 
 Blue Mouse communicates with OpenKneeboard using its tablet-input interface.
 
-The application currently supports the OTD-IPC interface used by OpenKneeboard, including compatibility with the legacy interface used by OpenKneeboard 1.12.x.
+Blue Mouse provides OTD-IPC v1 and v2 tablet-input interfaces. **Both protocols can carry right-button input**; OTD-IPC v2 is **not** required for right-click.
 
-Blue Mouse creates a virtual tablet input source that OpenKneeboard can recognize while DCS remains the active foreground application.
+**Right-click was manually validated with OpenKneeboard 1.12.14.2922 using OTD-IPC v1 and Blue Mouse 1.0.7.** Other OpenKneeboard versions and page types may behave differently.
 
-No modification to DCS is required.
+Blue Mouse is an independent application. It does not modify OpenKneeboard or require a custom OpenKneeboard build.
 
-Blue Mouse does **not** modify:
+No modification to the simulator is required.
+
+For DCS, Blue Mouse does **not** modify:
 
 - DCS program files
 - DCS Saved Games files
@@ -129,8 +140,6 @@ Blue Mouse does **not** modify:
 
 ## 🖼️ Screenshots
 
-Add screenshots here:
-
 ### Blue Mouse
 
 ![Blue Mouse](docs/images/Blue-Mouse-Control-Tab.png)
@@ -141,7 +150,7 @@ Add screenshots here:
 
 ### About
 
-![Blue Mouse Settings](docs/images/Blue-Mouse-About-Tab.png)
+![Blue Mouse About](docs/images/Blue-Mouse-About-Tab.png)
 
 ---
 
@@ -149,7 +158,7 @@ Add screenshots here:
 
 ### Recommended Installation
 
-1. Open the **Releases** section of this repository.
+1. Open the [**Releases** section](https://github.com/bluexone116/BlueMouse/releases) of this repository.
 2. Download the latest:
 
    `BlueMouse-x.x.x-Setup.exe`
@@ -183,7 +192,7 @@ After installing Blue Mouse:
 
 1. Start **Blue Mouse**.
 2. Start **OpenKneeboard**.
-3. Start **DCS World**.
+3. Start your simulator (for example, **DCS World** or **MSFS 2024**).
 4. Open the Blue Mouse **Settings** page.
 5. Select your preferred activation method.
 
@@ -208,11 +217,11 @@ The assignment is saved automatically.
 
 ## ✈️ Using Blue Mouse
 
-Once DCS and OpenKneeboard are running:
+Once your simulator and OpenKneeboard are running:
 
 ### Normal Operation
 
-Your mouse controls DCS normally.
+Your mouse controls the simulator normally.
 
 ### Activate Blue Mouse
 
@@ -220,21 +229,21 @@ Press your assigned HOTAS button or middle-click the mouse.
 
 Blue Mouse switches to:
 
-**KNEEBOARD MOUSE**
+**KNEEBOARD MOUSE** (or the equivalent active state shown by your version)
 
 Move the mouse and the OpenKneeboard pointer will respond.
 
-Use the left mouse button to interact with OpenKneeboard.
+Use the left mouse button to select and interact. Use the right mouse button for context actions in supported OpenKneeboard content.
 
-### Return to DCS
+### Return to Your Simulator
 
 Press your activation control again.
 
 Blue Mouse returns to:
 
-**DCS MOUSE**
+its inactive mouse-control state
 
-Your normal DCS mouse control is immediately restored.
+Your normal simulator mouse control is restored.
 
 ---
 
@@ -271,10 +280,11 @@ to expose the **Diagnostics** page.
 
 Diagnostic information includes:
 
-- DCS detection
+- Simulator detection
 - OpenKneeboard detection
 - Foreground process
-- Tablet connection
+- OTD-IPC v1/v2 connection and publishing state
+- Physical left/right button state and last successfully sent v2 button mask
 - HOTAS/HID information
 - Mouse input state
 - Virtual tablet state
@@ -289,13 +299,13 @@ For normal use, Diagnostics is intentionally hidden.
 ## 🖥️ System Requirements
 
 - 🪟 Windows 10 or Windows 11
-- ✈️ DCS World
+- ✈️ A compatible simulator (DCS World and MSFS 2024 manually tested)
 - 🥽 OpenKneeboard
 - 🖱️ Standard Windows mouse
 - 🎮 Optional joystick/HOTAS device
 - 🥽 VR headset for the intended use case
 
-Blue Mouse is primarily designed and tested for **DCS World VR with OpenKneeboard**.
+Blue Mouse is designed for **OpenKneeboard interaction in VR**. A VR headset is relevant to the primary use case, but simulator compatibility is distinct from the headset connection method.
 
 ---
 
@@ -323,7 +333,7 @@ When reporting an issue, please include:
 
 - Blue Mouse version
 - Windows version
-- DCS version
+- Simulator name and version
 - OpenKneeboard version
 - Activation method used
 - HOTAS model, if applicable
@@ -339,7 +349,7 @@ Please use the repository **Issues** section for bug reports.
 
 Ideas and suggestions are welcome.
 
-Blue Mouse was created to make interacting with OpenKneeboard in VR simpler and more natural while keeping DCS in control of the foreground.
+Blue Mouse was created to make interacting with OpenKneeboard in VR simpler and more natural while keeping the simulator in control of the foreground.
 
 Feature requests can be submitted through the repository **Issues** section.
 
@@ -357,9 +367,9 @@ Please review the license terms before installing, redistributing, or modifying 
 
 Blue Mouse is an independent community-developed utility.
 
-It is not affiliated with or endorsed by Eagle Dynamics or the OpenKneeboard project.
+It is not affiliated with or endorsed by Eagle Dynamics, Microsoft, iRacing, or the OpenKneeboard project.
 
-DCS World and associated names and trademarks are the property of their respective owners.
+DCS World, Microsoft Flight Simulator, iRacing, OpenKneeboard, and associated names and trademarks belong to their respective owners.
 
 Use of this software is at your own risk.
 
@@ -369,12 +379,12 @@ Use of this software is at your own risk.
 
 Blue Mouse is part of the **BlueZone Tools** collection.
 
-BlueZone develops tools and utilities designed to improve the DCS World experience for pilots, mission creators, server administrators, and communities.
+BlueZone develops tools and utilities for simulation enthusiasts, pilots, mission creators, server administrators, and communities.
 
 ### BlueZone Tools
 
 - 🚀 **Blue Runner** — DCS application launcher and utility manager
-- 🖱️ **Blue Mouse** — OpenKneeboard mouse control for DCS VR
+- 🖱️ **Blue Mouse** — standalone OpenKneeboard mouse control for VR simulators
 - 🧩 **Blue Mods** — DCS modification management
 - 📊 **BlueReel** — DCS event logging and analysis
 - 🎬 Additional BlueZone utilities and tools
@@ -383,9 +393,9 @@ BlueZone develops tools and utilities designed to improve the DCS World experien
 
 ## 🤝 Support the Project
 
-Blue Mouse is developed and maintained as a free tool for the DCS community.
+Blue Mouse is developed and maintained as a free tool for the simulation community.
 
-Development, testing, documentation, and continued improvements all take time and resources. If Blue Mouse improves your DCS VR experience and you would like to support continued BlueZone development, your contribution is greatly appreciated—but never expected.
+Development, testing, documentation, and continued improvements all take time and resources. If Blue Mouse improves your VR experience and you would like to support continued BlueZone development, your contribution is greatly appreciated—but never expected.
 
 ### ☕ [Support on Ko-fi](https://ko-fi.com/bluezone116)
 
@@ -401,6 +411,6 @@ Thank you for using Blue Mouse and supporting the BlueZone community. ✈️
 
 ## 🖱️ Mouse to Kneeboard. Back to Flying.
 
-**Activate. Navigate. Click. Fly.**
+**Activate. Navigate. Left-click. Right-click. Fly.**
 
-🖱️ **Blue Mouse — OpenKneeboard control without leaving DCS.**
+🖱️ **Blue Mouse — OpenKneeboard control without leaving your simulator.**
